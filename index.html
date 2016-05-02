@@ -50,7 +50,7 @@
 	<div class="slides">
 
 		<section class="">
-			<h1>Template Transforms</h1>
+			<h1>Pipe Hype</h1>
 		</section>
 
 		<section class="sub-section-slide" data-background-transition="slide" data-background="#8092c4">
@@ -59,26 +59,48 @@
 			<!--TODO add logo-->
 		</section>
 
-		<section class="" data-background="#8092c4">
-			<h2>Don't look at my data, it is hideous!</h2>
-		</section>
+		<!--<section class="" data-background="#8092c4">-->
+			<!--<h2>Don't look at my data, it is hideous!</h2>-->
+		<!--</section>-->
 
-		<section>
-			<div class="fragment">
-				<h2>Pipes</h2>
+        <!--<section>-->
+            <!--<div>-->
+                <!--<h2>Pipes</h2>-->
 
-		  <pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>@Component({
-selector: 'file-detail',
-template: `
-  <span>Last Modified:</span>
-  <span>{{file?.lastModified | date}}</span>
+		  <!--<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>-->
+              <!--<span>{{file?.lastModified | date}}</span>-->
+          <!--</code></pre>-->
+            <!--</div>-->
+            <!--<aside class="notes">A pipe takes in data as input and transforms it to a desired output.</aside>-->
+        <!--</section>-->
 
-`
-})
-class FileDetailComponent { }</code></pre>
-			</div>
-			<aside class="notes">A pipe takes in data as input and transforms it to a desired output.</aside>
-		</section>
+        <!--<section>-->
+            <!--<div>-->
+                <!--<h2>Pipes</h2>-->
+
+		  <!--<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>-->
+              <!--<span>{{file?.lastModified | date:}}</span>-->
+          <!--</code></pre>-->
+            <!--</div>-->
+            <!--<aside class="notes">A pipe takes in data as input and transforms it to a desired output.</aside>-->
+        <!--</section>-->
+
+		<!--<section>-->
+			<!--<div class="fragment">-->
+				<!--<h2>Pipes</h2>-->
+
+		  <!--<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>@Component({-->
+<!--selector: 'file-detail',-->
+<!--template: `-->
+  <!--<span>Last Modified:</span>-->
+  <!--<span>{{file?.lastModified | date}}</span>-->
+
+<!--`-->
+<!--})-->
+<!--class FileDetailComponent { }</code></pre>-->
+			<!--</div>-->
+			<!--<aside class="notes">A pipe takes in data as input and transforms it to a desired output.</aside>-->
+		<!--</section>-->
 
 		<section>
 			<h2>Pipes</h2>
@@ -92,6 +114,8 @@ template: `
   `
 })
 class FileDetailComponent { }</foo-code></pre>
+            <aside class="notes">We still have the familiar sytax of pipe in our templates</aside>
+
 		</section>
 
 		<section>
@@ -135,60 +159,110 @@ template: `
   &lt;p&gt;<span style="color: #000;">{{ expression | replace:pattern:replacement}}</span>&lt;/p&gt;
 `
 })
+
 class FileDetailComponent { }</foo-code></pre>
-			<aside class="notes">Can we write our own parameters with regex? Creates a new String with some or all of the matches of a pattern replaced by
+            <p><a href="https://plnkr.co/edit/vYDCnojcr3PizzQbZNjN?p=preview" target="_blank">Plunker</a></p>
+			<aside class="notes">Can we write our own parameters with regex?
+                Replace pipe Creates a new String with some or all of the matches of a pattern replaced by
 				* a replacement.</aside>
 		</section>
 		<section>
 			<h2>ReplacePipe</h2>
 
 		  <pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>@Component({
-  ...
   template: `
   &lt;span&gt;Made with:&lt;/span&gt;
-  &lt;p&gt;<span style="color: #000;">{{ expression | replace:pattern:replacement}}</span>&lt;/p&gt;
-  `
-  })
-  class ReplacePipeComponent {
+  &lt;p&gt;<span style="color: #000;">Hello {{name | replace:pattern:'2.0'}}</span>&lt;/p&gt;`})
+  <span style="color: #000;">class ReplacePipeComponent {
     constructor() {
 	  this.name = 'Angular 1.5'
 	  this.pattern = new RegExp(/(?:\d*\.)?\d+/g);
 	}
-  }</foo-code></pre>
-			<aside class="notes"></aside>
+  }</span></foo-code></pre>
+			<aside class="notes">https://plnkr.co/edit/vYDCnojcr3PizzQbZNjN?p=preview</aside>
 		</section>
 
 		<section>
 			<h2>JsonPipe</h2>
 
-		  <pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>@Component({
+		  <pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>@Component({
 selector: 'file-detail',
 template: `
-	&lt;span&gt;File:&lt;/span&gt;
-	&lt;p&gt;<span style="color: #000;">{{file | json}}</span>&lt;/p&gt;
+  &lt;span&gt;File:&lt;/span&gt;
+  &lt;p&gt;<span style="color: #000;">{{file | json}}</span>&lt;/p&gt;
 `
 })
-class FileDetailComponent { }</code></pre>
-			<aside class="notes">Cool new addition is json, helps with debugging.</aside>
+class FileDetailComponent { }</foo-code></pre>
+			<aside class="notes">Cool new addition to angular 2 is json pipe,
+                it is very helps with debugging.
+                Still angular pipes are very limited in number, we will end up writing our custom pipes.
+                Let's get to it.
+            </aside>
 		</section>
+        <section class="sub-section-slide" data-background-transition="slide" data-background="#8092c4">
+            <h2>Custom Pipes</h2>
+        </section>
 
 		<section>
 		<h2>Custom Pipes</h2>
-		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><code>import {Pipe,PipeTransform} from 'angular2/core'
-@Pipe({name: 'trim'})
+		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code><span style="color: #000;">import {Pipe,PipeTransform} from 'angular2/core'
+@Pipe</span>({name: 'trim'})
 export class TrimPipe implements PipeTransform {
   transform(str:string, [length]) : string {
 	if (!str || !length || str.length <= length) {
-		return (str || '');
+	  return (str || '');
 	}
-	return str.substr(0, length) + (length <= 3 ? '' : '...');
+    let dots = length <= 3 ? '' : '...';
+    return str.substr(0, length) + dots;
   }
 }
-		</code></pre>
-		<aside class="notes"></aside>
+		</foo-code></pre>
+            <aside class="notes">A pipe is a class decorated with pipe metadata. We implement the transform method of PipeTransform interface.
+                The @Pipe decorator takes an object with a name property whose value is the pipe name that we'll use within a template expression.
+                Then we can define the transform method to format our input to our desired output.
+            </aside>
 		</section>
+        <section>
+            <h2>Custom Pipes</h2>
+		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>import {Pipe,PipeTransform} from 'angular2/core'
+@Pipe(<span style="color: #000;">{name: 'trim'}</span>)
+export class TrimPipe implements PipeTransform {
+  transform(str:string, [length]) : string {
+    if (!str || !length || str.length <= length) {
+      return (str || '');
+    }
+    let dots = length <= 3 ? '' : '...';
+      return str.substr(0, length) + dots;
+  }
+}
+        </foo-code></pre>
+            <aside class="notes">A pipe is a class decorated with pipe metadata. We implement the transform method of PipeTransform interface.
+                The @Pipe decorator takes an object with a name property whose value is the pipe name that we'll use within a template expression.
+                Then we can define the transform method to format our input to our desired output.
+            </aside>
+        </section>
+        <section>
+            <h2>Custom Pipes</h2>
+		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>import {Pipe,PipeTransform} from 'angular2/core'
+@Pipe({name: 'trim'})
+export class TrimPipe implements PipeTransform {
+  <span style="color: #000;">transform(str:string, [length]) : string </span>{
+    if (!str || !length || str.length <= length) {
+      return (str || '');
+    }
+    let dots = length <= 3 ? '' : '...';
+      <span style="color: #000;">return str.substr(0, length) + dots;</span>
+  }
+}
+        </foo-code></pre>
+            <aside class="notes">A pipe is a class decorated with pipe metadata. We implement the transform method of PipeTransform interface.
+                The @Pipe decorator takes an object with a name property whose value is the pipe name that we'll use within a template expression.
+                Then we can define the transform method to format our input to our desired output.
+            </aside>
+        </section>
 
 		<section>
+            <!--TODO add an example video of not working pure pipe-->
 		<h2>Pipes and Change Detection</h2>
 		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>import {Pipe,
 PipeTransform} from 'angular2/core';
@@ -199,7 +273,9 @@ export class SharedPipe implements PipeTransform {
 }
 }
 		</foo-code></pre>
-		<aside class="notes"></aside>
+		<aside class="notes">What makes angular2 pipes more efficient is the way it detects change.
+        By default angular2 pipes are pure. What is a pure pipe?
+        </aside>
 		</section>
 		<section>
 		<h2>Pipes and Change Detection</h2>
@@ -208,7 +284,7 @@ export class SharedPipe implements PipeTransform {
   &lt;input type=checbox&gt; [(ngModel)]="file.shared"
   {{file.name}}
 </div></foo-code></pre>
-		<aside class="notes">he object reference to the array hasn't changed. It's the same array. That's all
+		<aside class="notes">The object reference to the array hasn't changed. It's the same array. That's all
 		Angular cares about. From its perspective, same array, no change, no display update.
 		</aside>
 		</section>
@@ -265,8 +341,8 @@ class FilesListComponent {
 	this.files = filesService.getFiles();
   }
 }</code></pre>
-			<aside class="notes">The Angular AsyncPipe is an interesting example of an impure pipe. The Async pipe can
-				receive a Promise or Observable as input and subscribe to the input automatically.
+			<aside class="notes">Angular AsyncPipe is an interesting example of an impure pipe. The Async pipe can
+				receive a Promise or Observable as input and subscribe to the input changes automatically.
 				It is also stateful. The pipe maintains a subscription to the input Observable and keeps delivering
 				values from that Observable as they arrive.
 				</aside>
@@ -355,7 +431,7 @@ export class FetchJsonPipe implements PipeTransform{
 			<a href="">Demo</a>
 		</section>
 		<section>
-			<h2>Can we can do better?</h2>
+			<h2>Can we do better?</h2>
 <pre ng-non-bindable style="font-size: 1.2em; line-height: 35px; margin-top: 1.5em;"><code>
 <div *ngFor="#file of userFileStore | async">
 	{{file.name}}
