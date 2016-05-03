@@ -251,7 +251,7 @@ export class TrimPipe implements PipeTransform {
       return (str || '');
     }
     let dots = length <= 3 ? '' : '...';
-      <span style="color: #000;">return str.substr(0, length) + dots;</span>
+    <span style="color: #000;">return str.substr(0, length) + dots;</span>
   }
 }
         </foo-code></pre>
@@ -280,7 +280,7 @@ export class SharedPipe implements PipeTransform {
 		<section>
 		<h2>Pipes and Change Detection</h2>
 		<pre ng-non-bindable style="font-size: 1.2em; line-height: 40px; margin-top: 1.5em;"><foo-code>
-<div *ngFor="#file of (files | shared)">
+<div *ngFor="let file of (files | shared)">
   &lt;input type=checbox&gt; [(ngModel)]="file.shared"
   {{file.name}}
 </div></foo-code></pre>
@@ -374,7 +374,7 @@ class FilesListComponent {
 		<pre ng-non-bindable style="font-size: 1.2em; line-height: 35px; margin-top: 1.5em;"><code>@Component({
 template:
   &lt;ul&gt;
-    &lt;li *ngFor="#file of files | async"&gt;
+    &lt;li *ngFor="let file of files | async"&gt;
 	  ...
     &lt;/li&gt;
   &lt;/ul&gt;
@@ -389,7 +389,7 @@ class FilesListComponent {...}</code></pre>
 		<pre ng-non-bindable style="font-size: 1.2em; line-height: 35px; margin-top: 1.5em;"><foo-code>@Component({
 template: `
   &lt;ul&gt;
-	&lt;li *ngFor="<span style="color: #000;">#file of files | async</span>"&gt;
+	&lt;li *ngFor="<span style="color: #000;">let file of files | async</span>"&gt;
 	  ...
 	&lt;/li&gt;
   &lt;/ul&gt;
@@ -420,7 +420,7 @@ export class FetchJsonPipe implements PipeTransform{
 
 		<section>
 <pre ng-non-bindable style="font-size: 1.2em; line-height: 35px; margin-top: 1.5em;"><code>
-<div *ngFor="#file of ('filesApiUrl' | fetch) | async">
+<div *ngFor="let file of ('filesApiUrl' | fetch) | async">
 {{file.name}}
 </div>
 </code></pre>
@@ -433,7 +433,7 @@ export class FetchJsonPipe implements PipeTransform{
 		<section>
 			<h2>Can we do better?</h2>
 <pre ng-non-bindable style="font-size: 1.2em; line-height: 35px; margin-top: 1.5em;"><code>
-<div *ngFor="#file of userFileStore | async">
+<div *ngFor="let file of userFileStore | async">
 	{{file.name}}
 </div>
 </code></pre>
